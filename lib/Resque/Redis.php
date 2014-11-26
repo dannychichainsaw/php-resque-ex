@@ -154,6 +154,7 @@ else
 				return parent::__call($name, $args[1]);
 			}
 			catch(RedisException $e) {
+        print_r($e);
 				return false;
 			}
 		}

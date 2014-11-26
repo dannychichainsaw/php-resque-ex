@@ -99,7 +99,7 @@ class Resque
 				$port = null;
 			}
 			require_once dirname(__FILE__) . '/Resque/Redis.php';
-			$redisInstance = new Resque_Redis($host, $port, 5 , self::$password);
+			$redisInstance = new Resque_Redis($host, $port,5, self::$password);
 			$redisInstance->prefix(self::$namespace);
 			self::$redis = $redisInstance;
 		}
@@ -120,8 +120,15 @@ class Resque
 	 */
 	public static function push($queue, $item)
 	{
+    try{
 		self::redis()->sadd('queues', $queue);
-		self::redis()->rpush('queue:' . $queue, json_encode($item));
+		$result = self::redis()->rpush('queue:' . $queue, json_encode($item));
+    print_r($result);
+
+  }catch (Exception $e){
+    print_r ($e);
+  }
+
 	}
 
 	/**
