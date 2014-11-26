@@ -99,7 +99,7 @@ class Resque
 				$port = null;
 			}
 			require_once dirname(__FILE__) . '/Resque/Redis.php';
-			$redisInstance = new Resque_Redis($host, $port, self::$password);
+			$redisInstance = new Resque_Redis($host, $port, 5 , self::$password);
 			$redisInstance->prefix(self::$namespace);
 			self::$redis = $redisInstance;
 		}
