@@ -120,15 +120,15 @@ class Resque
 	 */
 	public static function push($queue, $item)
 	{
-    print_r(self::$redis);
+    //print_r(self::$redis);
 
     try{
 		self::redis()->sadd('queues', $queue);
 		$result = self::redis()->rpush('queue:' . $queue, json_encode($item));
-    print_r($result);
+    //print_r($result);
 
   }catch (Exception $e){
-    print_r ($e);
+    //print_r ($e);
   }
 
 	}
