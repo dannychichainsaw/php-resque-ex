@@ -13,7 +13,7 @@ class My_Resque_Plugin
 	public static function afterEnqueue($class, $arguments)
 	{
 		echo "Job was queued for " . $class . ". Arguments:";
-		print_r($arguments);
+		//print_r($arguments);
 	}
 	
 	public static function beforeFirstFork($worker)
